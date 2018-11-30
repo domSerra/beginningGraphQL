@@ -1,0 +1,25 @@
+{
+  "name": "beginninggraphql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/domSerra/beginningGraphQL.git"
+  },
+  "author": "Dom Serra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/domSerra/beginningGraphQL/issues"
+  },
+  "homepage": "https://github.com/domSerra/beginningGraphQL#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.0.2",
+    "lodash": "^4.17.11"
+  }
+}
