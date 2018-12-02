@@ -1,5 +1,5 @@
 const graphql = require('graphql');
-const _ = require('lodash');
+const axios = require('axios');
 
 const {
   GraphQLObjectType,
@@ -7,11 +7,6 @@ const {
   GraphQLString,
   GraphQLSchema
 } = graphql;
-
-const users = [
-  {id: '23', firstName: 'tooley', age: 45},
-  {id: '65', firstName: 'rew', age: 09876},
-]
 
 //defines what will be returned by your query
 //In this case, it is requrning a User (called UserType)
@@ -63,13 +58,23 @@ const RootQuery = new GraphQLObjectType({
         the resolve is what actually does the fetching from which-
         ever data source it is connected to.
 
+        resolve returns the data that represents a User Object
+
         parentValue is almost never used. It is needed to get to the
         args argument.
 
-        This resolve is returning a javascript object.
+        This resolve is returning a javascript object currently.
+
+        resolve can also return a promise and work in a asyncronous
+        manner. Nearly all data being returned will be don in an
+        asynchronous fashion. So all data responses WILL be handled
+        with a returned promise.
+
+        API/data calls will be made in here within the promise.
       */
       resolve(parentValue, args) {
-        return _.find(users, {id: args.id})
+        return axios.get(`http://localhost:3000/users/${args.id}`)
+          .then(res => res.data)
       }
     }
   }
