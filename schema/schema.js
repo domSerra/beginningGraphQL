@@ -8,6 +8,16 @@ const {
   GraphQLSchema
 } = graphql;
 
+
+const CarType = new GraphQLObjectType({
+  name: 'Car',
+  fields: {
+    id: {type: GraphQLString},
+    name: {type: GraphQLString},
+    manufacturer: {type: GraphQLString}
+  }
+})
+
 //defines what will be returned by your query
 //In this case, it is requrning a User (called UserType)
 const UserType = new GraphQLObjectType({
@@ -23,7 +33,11 @@ const UserType = new GraphQLObjectType({
     */
     id: { type: GraphQLString},
     firstName: {type: GraphQLString},
-    age: {type: GraphQLInt}
+    age: {type: GraphQLInt},
+    car: {
+      type: CarType,
+      resolve: (parentValue, args) => axios.get(`http://localhost:3000/cars/${parentValue.carId}`).then(res => res.data)
+    }
   }
 });
 
@@ -72,10 +86,7 @@ const RootQuery = new GraphQLObjectType({
 
         API/data calls will be made in here within the promise.
       */
-      resolve(parentValue, args) {
-        return axios.get(`http://localhost:3000/users/${args.id}`)
-          .then(res => res.data)
-      }
+      resolve: (parentValue, args) => axios.get(`http://localhost:3000/users/${args.id}`).then(res => res.data)
     }
   }
 })

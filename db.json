@@ -1,7 +1,13 @@
 {
   "users": [
-    {"id": "23", "firstName" : "Sheed", "age": 28},
-    {"id": "25", "firstName": "Tooley", "age": 45},
-    {"id": "65", "firstName": "Pandora", "age": 9876}
+    {"id": "23", "firstName" : "Sheed", "age": 28, "carId": "2"},
+    {"id": "25", "firstName": "Tooley", "age": 45, "carId": "3"},
+    {"id": "65", "firstName": "Pandora", "age": 9876, "carId": "1"},
+    {"id": "55", "firstName": "Azulika", "age": 30, "carId": "2"}
+  ],
+  "cars": [
+    {"id": "1", "name": "RX-7", "manufacturer": "Mazda"},
+    {"id": "2", "name": "Impreza", "manufacturer": "Subaru"},
+    {"id": "3", "name": "Model S", "manufacturer": "Tesla"}
   ]
 }
